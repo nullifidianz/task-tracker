@@ -12,7 +12,7 @@ public class Main {
         TaskService service = new TaskService();
 
         if (args.length == 0) {
-            System.out.println(ConsoleColors.error("❌ No command provided"));
+            System.out.println(ConsoleColors.error("No command provided"));
             return;
         }
 
@@ -48,10 +48,10 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println(ConsoleColors.error("❌ Invalid command."));
+                    System.out.println(ConsoleColors.error("Invalid command."));
             }
         } catch (Exception e) {
-            System.err.println(ConsoleColors.error("❌ Error: " + e.getMessage()));
+            System.err.println(ConsoleColors.error(" Error: " + e.getMessage()));
         }
     }
 }

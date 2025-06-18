@@ -43,3 +43,4 @@ task-tracker.jar
 !src/
 !pom.xml
 !README.md
+!README_EN.md

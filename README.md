@@ -1,6 +1,6 @@
 # Task Tracker
 
-[![English Version](https://img.shields.io/badge/english%20version-en-blue)](./README.md)
+[![English Version](https://img.shields.io/badge/english%20version-en-blue)](./README_EN.md)
 
 Um gerenciador de tarefas simples em Java que salva as tarefas em um arquivo JSON com interface colorida no terminal. Seguindo como referência o [Guia de projetos do roadmap.sh](https://roadmap.sh/projects/task-tracker)
 

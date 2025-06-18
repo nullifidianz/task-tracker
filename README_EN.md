@@ -152,7 +152,7 @@ task-tracker/
 │       ├── TaskJsonParser.java  # JSON serialization
 │       └── TaskPrinter.java     # Table formatting
 ├── pom.xml                      # Maven configuration
-├── README.md                    # English documentation
-├── README.pt-br.md              # Portuguese documentation
+├── README.md                    # Portuguese documentation
+├── README.EN.md                 # English documentation
 └── tasks.json                   # Task data file (generated)
 ```

@@ -2,6 +2,7 @@ package com.nullifidianz.utils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.nullifidianz.model.Task;
 
@@ -18,10 +19,14 @@ public class TaskJsonParser {
     }
 
     public static String stringify(List<Task> tasks) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+
         try {
-            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(tasks);
-        } catch (IOException e) {
-            throw new RuntimeException("Erro ao serializar tasks em JSON", e);
+            return mapper.writeValueAsString(tasks);
+        } catch (Exception e) {
+            throw new RuntimeException("Error serializing tasks", e);
         }
     }
 

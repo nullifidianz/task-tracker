@@ -1,6 +1,5 @@
 package com.nullifidianz.model;
 
-
 import com.nullifidianz.enums.Status;
 
 import java.time.LocalDateTime;
@@ -68,17 +67,18 @@ public class Task {
     @Override
     public String toString() {
         return String.format(
-                "| %-36s | %-29s | %-12s | %-19s | %-19s |",
-                id, truncate(description, 29), status,
-                createdAt.toString().replace('T', ' '),
-                updatedAt.toString().replace('T', ' ')
-        );
+                "| %-36s | %-29s | %-12s | %-19s | %-27s |",
+                id.toString(),
+                truncate(description, 29),
+                status.name(),
+                createdAt.toString().substring(0, 19),
+                updatedAt.toString().substring(0, 27));
     }
 
-    private String truncate(String value, int length) {
-        if (value == null) return "";
-        return value.length() <= length ? value : value.substring(0, length - 3) + "...";
+    private String truncate(String text, int maxLength) {
+        if (text.length() <= maxLength)
+            return text;
+        return text.substring(0, maxLength - 3) + "...";
     }
-
 
 }

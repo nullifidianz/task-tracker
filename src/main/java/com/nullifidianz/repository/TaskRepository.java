@@ -18,31 +18,32 @@ public class TaskRepository {
 
     private List<Task> loadTasks() {
         File file = new File(FILE_NAME);
-        if (!file.exists()) return new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            StringBuilder json = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) json.append(line);
-            return TaskJsonParser.parse(json.toString());
+        if (!file.exists() || file.length() == 0)
+            return new ArrayList<>();
+        try {
+            String json = java.nio.file.Files.readString(file.toPath());
+            return TaskJsonParser.parse(json);
         } catch (IOException e) {
             throw new RuntimeException("Failed to load tasks", e);
         }
     }
 
     private void saveToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
-            writer.write(TaskJsonParser.stringify(tasks));
+        try {
+            java.nio.file.Files.writeString(new File(FILE_NAME).toPath(), TaskJsonParser.stringify(tasks));
         } catch (IOException e) {
             throw new RuntimeException("Failed to save tasks", e);
         }
     }
 
     public void save(Task task) {
+        this.tasks = loadTasks();
         tasks.add(task);
         saveToFile();
     }
 
     public void update(Task updatedTask) {
+        this.tasks = loadTasks();
         tasks = tasks.stream()
                 .map(task -> task.getId().equals(updatedTask.getId()) ? updatedTask : task)
                 .collect(Collectors.toList());
@@ -50,11 +51,13 @@ public class TaskRepository {
     }
 
     public void delete(UUID id) {
+        this.tasks = loadTasks();
         tasks.removeIf(task -> task.getId().equals(id));
         saveToFile();
     }
 
     public Task findById(UUID id) {
+        this.tasks = loadTasks();
         return tasks.stream()
                 .filter(task -> task.getId().equals(id))
                 .findFirst()
@@ -62,10 +65,12 @@ public class TaskRepository {
     }
 
     public List<Task> findAll() {
+        this.tasks = loadTasks();
         return new ArrayList<>(tasks);
     }
 
     public List<Task> findByStatus(Status status) {
+        this.tasks = loadTasks();
         return tasks.stream()
                 .filter(task -> task.getStatus() == status)
                 .collect(Collectors.toList());

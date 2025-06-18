@@ -21,47 +21,47 @@ Gere um JAR "fat" (com todas as dependências) usando:
 mvn clean package
 ```
 
-O arquivo gerado estará em `target/task-tracker-1.0-SNAPSHOT.jar` (ou `task-tracker-1.0-SNAPSHOT-shaded.jar`).
+O arquivo gerado estará em `target/task-tracker.jar`.
 
 ### 2. Executar comandos
 
 Execute o JAR usando:
 
 ```bash
-java -jar target/task-tracker-1.0-SNAPSHOT.jar <comando>
+java -jar target/task-tracker.jar <comando>
 ```
 
 #### Exemplos de uso:
 
 - **Adicionar tarefa:**
   ```bash
-  java -jar target/task-tracker-1.0-SNAPSHOT.jar add "Descrição da tarefa"
+  java -jar target/task-tracker.jar add "Descrição da tarefa"
   ```
 - **Atualizar tarefa:**
   ```bash
-  java -jar target/task-tracker-1.0-SNAPSHOT.jar update <ID_DA_TAREFA> "Nova descrição"
+  java -jar target/task-tracker.jar update <ID_DA_TAREFA> "Nova descrição"
   ```
 - **Excluir tarefa:**
   ```bash
-  java -jar target/task-tracker-1.0-SNAPSHOT.jar delete <ID_DA_TAREFA>
+  java -jar target/task-tracker.jar delete <ID_DA_TAREFA>
   ```
 - **Marcar como em progresso:**
   ```bash
-  java -jar target/task-tracker-1.0-SNAPSHOT.jar mark-in-progress <ID_DA_TAREFA>
+  java -jar target/task-tracker.jar mark-in-progress <ID_DA_TAREFA>
   ```
 - **Marcar como concluída:**
   ```bash
-  java -jar target/task-tracker-1.0-SNAPSHOT.jar mark-done <ID_DA_TAREFA>
+  java -jar target/task-tracker.jar mark-done <ID_DA_TAREFA>
   ```
 - **Listar todas as tarefas:**
   ```bash
-  java -jar target/task-tracker-1.0-SNAPSHOT.jar list
+  java -jar target/task-tracker.jar list
   ```
 - **Listar tarefas por status:**
   ```bash
-  java -jar target/task-tracker-1.0-SNAPSHOT.jar list todo
-  java -jar target/task-tracker-1.0-SNAPSHOT.jar list in-progress
-  java -jar target/task-tracker-1.0-SNAPSHOT.jar list done
+  java -jar target/task-tracker.jar list todo
+  java -jar target/task-tracker.jar list in-progress
+  java -jar target/task-tracker.jar list done
   ```
 
 ## Status Disponíveis
@@ -81,6 +81,7 @@ As tarefas são salvas no arquivo `tasks.json` na raiz do projeto.
 - Corrigido erro de formatação das datas na tabela
 - JAR gerado já inclui todas as dependências (maven-shade-plugin)
 - Melhor tratamento de erros e robustez
+- O nome do JAR agora é sempre `task-tracker.jar` para facilitar a execução
 
 ## Tecnologias
 

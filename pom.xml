@@ -47,6 +47,7 @@
     </dependencies>
 
     <build>
+        <finalName>task-tracker</finalName>
         <plugins>
             <!-- Plugin para criar JAR executável -->
             <plugin>
@@ -99,6 +100,7 @@
                                     <mainClass>${main.class}</mainClass>
                                 </transformer>
                             </transformers>
+                            <finalName>task-tracker</finalName>
                         </configuration>
                     </execution>
                 </executions>

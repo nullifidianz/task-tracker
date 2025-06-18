@@ -36,6 +36,7 @@ build/
 .idea/
 
 tasks.json
-
+task-tracker.jar
+task-tracker.bat
 ### Mac OS ###
 .DS_Store

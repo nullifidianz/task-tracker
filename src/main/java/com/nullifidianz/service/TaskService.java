@@ -3,6 +3,7 @@ package com.nullifidianz.service;
 import com.nullifidianz.enums.Status;
 import com.nullifidianz.model.Task;
 import com.nullifidianz.repository.TaskRepository;
+import com.nullifidianz.utils.ConsoleColors;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,7 +24,7 @@ public class TaskService {
                 LocalDateTime.now(),
                 LocalDateTime.now());
         repository.save(task);
-        System.out.println("Task added successfully (ID: " + task.getId() + ")");
+        System.out.println(ConsoleColors.success("✅ Task added successfully (ID: " + task.getId() + ")"));
     }
 
     public void updateTask(UUID id, String newDescription) {
@@ -31,12 +32,12 @@ public class TaskService {
         task.setDescription(newDescription);
         task.setUpdatedAt(LocalDateTime.now());
         repository.update(task);
-        System.out.println("Task updated.");
+        System.out.println(ConsoleColors.info("🔄 Task updated successfully."));
     }
 
     public void deleteTask(UUID id) {
         repository.delete(id);
-        System.out.println("Task " + id + " deleted.");
+        System.out.println(ConsoleColors.warning("🗑️ Task " + id + " deleted."));
     }
 
     public void markTask(UUID id, Status status) {
@@ -44,7 +45,7 @@ public class TaskService {
         task.setStatus(status);
         task.setUpdatedAt(LocalDateTime.now());
         repository.update(task);
-        System.out.println("Task marked as " + status);
+        System.out.println(ConsoleColors.highlight("📝 Task marked as " + status));
     }
 
     public List<Task> listAll() {

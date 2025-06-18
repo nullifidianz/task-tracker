@@ -1,6 +1,7 @@
 package com.nullifidianz.model;
 
 import com.nullifidianz.enums.Status;
+import com.nullifidianz.utils.ConsoleColors;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -73,11 +74,17 @@ public class Task {
                 ? updatedAt.toString().substring(0, Math.min(19, updatedAt.toString().length()))
                 : "N/A";
 
+        String statusColor = switch (status) {
+            case TODO -> ConsoleColors.YELLOW_BOLD;
+            case IN_PROGRESS -> ConsoleColors.BLUE_BOLD;
+            case COMPLETED -> ConsoleColors.GREEN_BOLD;
+        };
+
         return String.format(
                 "| %-36s | %-29s | %-12s | %-19s | %-19s |",
-                id.toString(),
+                ConsoleColors.WHITE_BRIGHT + id.toString() + ConsoleColors.RESET,
                 truncate(description, 29),
-                status.name(),
+                statusColor + status.name() + ConsoleColors.RESET,
                 createdAtStr,
                 updatedAtStr);
     }

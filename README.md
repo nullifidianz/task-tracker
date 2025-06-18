@@ -74,15 +74,6 @@ java -jar target/task-tracker.jar <comando>
 
 As tarefas são salvas no arquivo `tasks.json` na raiz do projeto.
 
-## Correções Implementadas
-
-- Corrigido problema de serialização JSON que causava perda de tarefas
-- Corrigido método `list` para mostrar todas as tarefas
-- Corrigido erro de formatação das datas na tabela
-- JAR gerado já inclui todas as dependências (maven-shade-plugin)
-- Melhor tratamento de erros e robustez
-- O nome do JAR agora é sempre `task-tracker.jar` para facilitar a execução
-
 ## Tecnologias
 
 - Java 24

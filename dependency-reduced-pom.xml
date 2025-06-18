@@ -5,6 +5,7 @@
   <artifactId>task-tracker</artifactId>
   <version>1.0-SNAPSHOT</version>
   <build>
+    <finalName>task-tracker</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
@@ -49,6 +50,7 @@
                   <mainClass>${main.class}</mainClass>
                 </transformer>
               </transformers>
+              <finalName>task-tracker</finalName>
             </configuration>
           </execution>
         </executions>

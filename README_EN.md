@@ -1,6 +1,8 @@
 # Task Tracker
 
-A simple task manager in Java that saves tasks to a JSON file with a colored terminal interface.
+[![Português Brasileiro](https://img.shields.io/badge/vers%C3%A3o%20em%20portugu%C3%AAs-pt--br-green)](./README.pt-br.md)
+
+A simple task manager in Java that saves tasks to a JSON file with a colored terminal interface. Following [roadmap.sh projects guide](https://roadmap.sh/projects/task-tracker) as reference
 
 ## 🚀 Features
 
@@ -85,16 +87,6 @@ java -jar target/task-tracker.jar <command>
 
 Tasks are saved in the `tasks.json` file in the project root.
 
-## 🔧 Implemented Fixes
-
-- ✅ Fixed JSON serialization issue that caused task loss
-- ✅ Fixed `list` method to show all tasks
-- ✅ Fixed date formatting error in table
-- ✅ JAR generated includes all dependencies (maven-shade-plugin)
-- ✅ Better error handling and robustness
-- ✅ Colored interface for better user experience
-- ✅ JAR name is now always `task-tracker.jar` for easier execution
-
 ## 🛠️ Technologies
 
 - Java 24
@@ -160,23 +152,7 @@ task-tracker/
 │       ├── TaskJsonParser.java  # JSON serialization
 │       └── TaskPrinter.java     # Table formatting
 ├── pom.xml                      # Maven configuration
-├── README.md                    # Portuguese documentation
-├── README_EN.md                 # English documentation
+├── README.md                    # English documentation
+├── README.pt-br.md              # Portuguese documentation
 └── tasks.json                   # Task data file (generated)
 ```
-
-## 🤝 Contributing
-
-1. Fork the project
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🐛 Issues
-
-If you find any bugs or have suggestions, please open an issue on GitHub.

@@ -19,7 +19,9 @@ public class TaskPrinter {
     }
 
     private static void printHeader() {
-        System.out.println("| ID                                 | Description                   | Status       | Created At          | Updated At          |");
-        System.out.println("|------------------------------------|-------------------------------|--------------|---------------------|---------------------|");
+        System.out.println(
+                "| ID                                 | Description                   | Status       | Created At          |                       Updated At          |");
+        System.out.println(
+                "|------------------------------------|-------------------------------|--------------|---------------------|-------------------------------------------|");
     }
 }

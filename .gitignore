@@ -38,5 +38,7 @@ build/
 tasks.json
 task-tracker.jar
 task-tracker.bat
+
+*.class
 ### Mac OS ###
 .DS_Store

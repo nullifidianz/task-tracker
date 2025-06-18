@@ -1,44 +1,45 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Build output
+/target/
+*.class
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+# Arquivo de dados gerado pela aplicação
+tasks.json
+
+# Configurações de IDE
+.idea/
 *.iml
 *.ipr
+*.iws
+.vscode/
+nbproject/
+*.swp
 
-### Eclipse ###
-.apt_generated
+# Arquivos de build de outras IDEs
 .classpath
-.factorypath
 .project
-.settings
+.settings/
+build/
+bbbuild/
+dist/
+bdist/
+.apt_generated
+.factorypath
 .springBeans
 .sts4-cache
+.nb-gradle/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
-.idea/
-
-tasks.json
-task-tracker.jar
-task-tracker.bat
-
-*.class
-### Mac OS ###
+# MacOS
 .DS_Store
+
+# Scripts e binários locais
+*.bat
+*.sh
+task-tracker.jar
+
+# Maven wrapper (exceto o jar)
+.mvn/wrapper/maven-wrapper.jar
+
+# Permitir apenas arquivos essenciais
+!src/
+!pom.xml
+!README.md

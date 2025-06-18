@@ -1,34 +1,90 @@
-# task-tracker
+# Task Tracker
 
-Built a CLI app to track your tasks and manage your to-do list following [roadmap.sh projects guide](https://roadmap.sh/projects/task-tracker)
+Um gerenciador de tarefas simples em Java que salva as tarefas em um arquivo JSON.
 
+## Funcionalidades
 
+- ✅ Adicionar tarefas
+- ✅ Atualizar descrição de tarefas
+- ✅ Excluir tarefas
+- ✅ Marcar tarefas como "em progresso" ou "concluída"
+- ✅ Listar todas as tarefas
+- ✅ Listar tarefas por status
 
-## Comandos disponíveis
+## Como Usar (com Maven)
 
-- `add <descrição>`  
-  Adiciona uma nova tarefa.
+### 1. Compilar e empacotar o projeto
 
-- `update <id> <nova descrição>`  
-  Atualiza a descrição de uma tarefa existente.
+Gere um JAR "fat" (com todas as dependências) usando:
 
-- `delete <id>`  
-  Remove uma tarefa pelo ID.
+```bash
+mvn clean package
+```
 
-- `mark-in-progress <id>`  
-  Marca a tarefa como "em progresso".
+O arquivo gerado estará em `target/task-tracker-1.0-SNAPSHOT.jar` (ou `task-tracker-1.0-SNAPSHOT-shaded.jar`).
 
-- `mark-done <id>`  
-  Marca a tarefa como "concluída".
+### 2. Executar comandos
 
-- `list`  
-  Lista todas as tarefas.
+Execute o JAR usando:
 
-- `list todo`  
-  Lista tarefas com status "TODO".
+```bash
+java -jar target/task-tracker-1.0-SNAPSHOT.jar <comando>
+```
 
-- `list in-progress`  
-  Lista tarefas com status "IN_PROGRESS".
+#### Exemplos de uso:
 
-- `list done`  
-  Lista tarefas com status "DONE"
+- **Adicionar tarefa:**
+  ```bash
+  java -jar target/task-tracker-1.0-SNAPSHOT.jar add "Descrição da tarefa"
+  ```
+- **Atualizar tarefa:**
+  ```bash
+  java -jar target/task-tracker-1.0-SNAPSHOT.jar update <ID_DA_TAREFA> "Nova descrição"
+  ```
+- **Excluir tarefa:**
+  ```bash
+  java -jar target/task-tracker-1.0-SNAPSHOT.jar delete <ID_DA_TAREFA>
+  ```
+- **Marcar como em progresso:**
+  ```bash
+  java -jar target/task-tracker-1.0-SNAPSHOT.jar mark-in-progress <ID_DA_TAREFA>
+  ```
+- **Marcar como concluída:**
+  ```bash
+  java -jar target/task-tracker-1.0-SNAPSHOT.jar mark-done <ID_DA_TAREFA>
+  ```
+- **Listar todas as tarefas:**
+  ```bash
+  java -jar target/task-tracker-1.0-SNAPSHOT.jar list
+  ```
+- **Listar tarefas por status:**
+  ```bash
+  java -jar target/task-tracker-1.0-SNAPSHOT.jar list todo
+  java -jar target/task-tracker-1.0-SNAPSHOT.jar list in-progress
+  java -jar target/task-tracker-1.0-SNAPSHOT.jar list done
+  ```
+
+## Status Disponíveis
+
+- `TODO` - Tarefa pendente
+- `IN_PROGRESS` - Tarefa em progresso
+- `COMPLETED` - Tarefa concluída
+
+## Arquivo de Dados
+
+As tarefas são salvas no arquivo `tasks.json` na raiz do projeto.
+
+## Correções Implementadas
+
+- Corrigido problema de serialização JSON que causava perda de tarefas
+- Corrigido método `list` para mostrar todas as tarefas
+- Corrigido erro de formatação das datas na tabela
+- JAR gerado já inclui todas as dependências (maven-shade-plugin)
+- Melhor tratamento de erros e robustez
+
+## Tecnologias
+
+- Java 24
+- Maven
+- Jackson (JSON parsing)
+- JSR-310 (Java Time API)

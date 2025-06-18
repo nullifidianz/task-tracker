@@ -66,13 +66,20 @@ public class Task {
 
     @Override
     public String toString() {
+        String createdAtStr = createdAt != null
+                ? createdAt.toString().substring(0, Math.min(19, createdAt.toString().length()))
+                : "N/A";
+        String updatedAtStr = updatedAt != null
+                ? updatedAt.toString().substring(0, Math.min(19, updatedAt.toString().length()))
+                : "N/A";
+
         return String.format(
-                "| %-36s | %-29s | %-12s | %-19s | %-27s |",
+                "| %-36s | %-29s | %-12s | %-19s | %-19s |",
                 id.toString(),
                 truncate(description, 29),
                 status.name(),
-                createdAt.toString().substring(0, 19),
-                updatedAt.toString().substring(0, 27));
+                createdAtStr,
+                updatedAtStr);
     }
 
     private String truncate(String text, int maxLength) {

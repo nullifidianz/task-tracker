@@ -16,13 +16,10 @@ public class TaskJsonParser {
     static {
         // Registra o módulo para suporte a java.time.LocalDateTime
         mapper.registerModule(new JavaTimeModule());
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
     public static String stringify(List<Task> tasks) {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-
         try {
             return mapper.writeValueAsString(tasks);
         } catch (Exception e) {
@@ -31,6 +28,10 @@ public class TaskJsonParser {
     }
 
     public static List<Task> parse(String json) {
+        if (json == null || json.trim().isEmpty()) {
+            return List.of();
+        }
+
         try {
             return mapper.readValue(json, new TypeReference<List<Task>>() {
             });

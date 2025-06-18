@@ -21,8 +21,7 @@ public class TaskService {
                 description,
                 Status.TODO,
                 LocalDateTime.now(),
-                LocalDateTime.now()
-        );
+                LocalDateTime.now());
         repository.save(task);
         System.out.println("Task added successfully (ID: " + task.getId() + ")");
     }
@@ -37,7 +36,7 @@ public class TaskService {
 
     public void deleteTask(UUID id) {
         repository.delete(id);
-        System.out.println("Task" + id + "deleted.");
+        System.out.println("Task " + id + " deleted.");
     }
 
     public void markTask(UUID id, Status status) {

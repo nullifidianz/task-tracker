@@ -30,17 +30,30 @@ public class TaskJsonParser {
 
     public static List<Task> parse(String json) {
         List<Task> tasks = new ArrayList<>();
+        if (json == null || json.trim().isEmpty()) return tasks;
+
         json = json.trim();
         if (json.equals("[]")) return tasks;
+        if (!json.startsWith("[") || !json.endsWith("]")) throw new IllegalArgumentException("Invalid JSON array");
 
-        json = json.substring(1, json.length() - 1); // remove []
+        json = json.substring(1, json.length() - 1).trim(); // remove []
+
+        if (json.isEmpty()) return tasks; // proteção extra
+
         String[] objects = splitObjects(json);
 
         for (String obj : objects) {
             Task task = new Task();
-            String[] fields = obj.replace("{", "").replace("}", "").split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+            obj = obj.trim();
+            if (!obj.startsWith("{") || !obj.endsWith("}")) continue; // ignora objetos inválidos
+
+            String[] fields = obj.substring(1, obj.length() - 1)
+                    .split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
             for (String field : fields) {
                 String[] keyValue = field.split(":", 2);
+                if (keyValue.length < 2) continue;
+
                 String key = unquote(keyValue[0].trim());
                 String value = unquote(keyValue[1].trim());
 
@@ -52,11 +65,13 @@ public class TaskJsonParser {
                     case "updatedAt" -> task.setUpdatedAt(LocalDateTime.parse(value));
                 }
             }
-            tasks.add(task);
+
+            if (task.getId() != null) tasks.add(task); // só adiciona se foi parseado corretamente
         }
 
         return tasks;
     }
+
 
     private static String[] splitObjects(String jsonArrayContent) {
         List<String> objects = new ArrayList<>();
